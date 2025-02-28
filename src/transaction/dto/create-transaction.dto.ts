@@ -40,8 +40,4 @@ export class CreateTransactionDto {
   @ApiProperty({ example: 1, description: 'Id of category' })
   @IsNumber({}, { message: 'must be a number' })
   readonly category_id: number;
-
-  @ApiProperty({ example: 1, description: 'Id of user' })
-  @IsNumber({}, { message: 'must be a number' })
-  readonly user_id: number;
 }

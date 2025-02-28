@@ -10,8 +10,11 @@ export class TransactionService {
     @InjectModel(Transaction) private transactionRepository: typeof Transaction,
   ) {}
 
-  async createUser(dto: CreateTransactionDto) {
-    const user = await this.transactionRepository.create(dto);
+  async createTransaction(dto: CreateTransactionDto, user_id: number) {
+    const user = await this.transactionRepository.create(
+      { ...dto, user_id },
+      { include: { all: true } },
+    );
     return user;
   }
 

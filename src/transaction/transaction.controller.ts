@@ -35,8 +35,8 @@ export class TransactionController {
   @UseGuards(JwtAuthGuards)
   @UsePipes(ValidationPipe)
   @Post()
-  create(@Body() userDto: CreateTransactionDto) {
-    return this.transactionService.createUser(userDto);
+  create(@Body() userDto: CreateTransactionDto, @AuthProfile() profile) {
+    return this.transactionService.createTransaction(userDto, profile.id);
   }
 
   @ApiOperation({ summary: 'get all transactions from DB' })

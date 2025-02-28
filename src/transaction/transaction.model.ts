@@ -11,8 +11,12 @@ import { Category } from '../category/category.model';
 import { Profile } from '../profile/profile.model';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 
+interface TransacionCreationAttrs extends CreateTransactionDto {
+  user_id: number;
+}
+
 @Table({ tableName: 'transaction', createdAt: false, updatedAt: false })
-export class Transaction extends Model<Transaction, CreateTransactionDto> {
+export class Transaction extends Model<Transaction, TransacionCreationAttrs> {
   @ApiProperty({ example: '1', description: 'unique ID' })
   @Column({
     type: DataType.INTEGER,
@@ -74,7 +78,4 @@ export class Transaction extends Model<Transaction, CreateTransactionDto> {
 
   @BelongsTo(() => Category) // Связь
   category: Category;
-
-  @BelongsTo(() => Profile)
-  profile: Profile;
 }
