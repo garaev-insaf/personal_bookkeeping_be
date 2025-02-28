@@ -13,6 +13,7 @@ import { Transaction } from '../transaction/transaction.model';
 interface CategoryCreationAttrs {
   name: string;
   description: string;
+  user_id: number;
 }
 
 @Table({ tableName: 'category', createdAt: false, updatedAt: false })

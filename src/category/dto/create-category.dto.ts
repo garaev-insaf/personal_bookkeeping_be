@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateCategoryDto {
   @ApiProperty({ example: 'Supermarket', description: 'Category of spending' })
@@ -12,8 +12,4 @@ export class CreateCategoryDto {
   })
   @IsString({ message: 'must be a string' })
   readonly description: string;
-
-  @ApiProperty({ example: 1, description: 'Id of user' })
-  @IsNumber({}, { message: 'must be a number' })
-  readonly user_id: number;
 }
