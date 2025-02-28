@@ -22,9 +22,34 @@ export class ProfileService {
     return users;
   }
 
-  async updateProfile(userId: number, updateData: UpdateProfileDto) {
-    console.log(updateData);
-    const user = await this.userRepository.findByPk(userId);
+  async getProfile(user_id: number) {
+    const users = await this.userRepository.findAll({
+      where: { id: user_id },
+      attributes: {
+        exclude: ['password'],
+      },
+    });
+
+    if (users.length) {
+      return users[0];
+    }
+
+    return {};
+  }
+
+  async updateProfile(
+    userId: number,
+    updateData: UpdateProfileDto,
+    user_id: number,
+  ) {
+    if (user_id !== userId) {
+      throw new HttpException(
+        'Обнаглел? Это не твой аккаунт!',
+        HttpStatus.NOT_FOUND,
+      );
+    }
+
+    const user = await this.userRepository.findByPk(userId, {});
     if (!user) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
     }

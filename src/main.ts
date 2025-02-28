@@ -12,6 +12,7 @@ async function start() {
     .setDescription('Documentation of REST API')
     .setVersion('1.0.0')
     .addTag('Scotch')
+    .addBearerAuth() // Добавляем поддержку Bearer-токена
     .build();
   const documentation = SwaggerModule.createDocument(app, configSwagger);
   SwaggerModule.setup('/api/docs', app, documentation);

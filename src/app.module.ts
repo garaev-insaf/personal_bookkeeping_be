@@ -10,6 +10,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
 import { Transaction } from './transaction/transaction.model';
 import { TransactionModule } from './transaction/transaction.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   controllers: [],
@@ -31,6 +32,7 @@ import { TransactionModule } from './transaction/transaction.module';
       models: [Category, Profile, Transaction],
       // autoLoadModels: true,
     }),
+    AuthModule,
     TransactionModule,
     CategoryModule,
     FilesModule,

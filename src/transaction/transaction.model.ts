@@ -9,14 +9,10 @@ import {
 import { ApiProperty } from '@nestjs/swagger';
 import { Category } from '../category/category.model';
 import { Profile } from '../profile/profile.model';
-
-interface TransactionCreationAttrs {
-  email: string;
-  password: string;
-}
+import { CreateTransactionDto } from './dto/create-transaction.dto';
 
 @Table({ tableName: 'transaction', createdAt: false, updatedAt: false })
-export class Transaction extends Model<Transaction, TransactionCreationAttrs> {
+export class Transaction extends Model<Transaction, CreateTransactionDto> {
   @ApiProperty({ example: '1', description: 'unique ID' })
   @Column({
     type: DataType.INTEGER,
