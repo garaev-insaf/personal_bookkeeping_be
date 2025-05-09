@@ -11,6 +11,8 @@ import * as path from 'path';
 import { Transaction } from './transaction/transaction.model';
 import { TransactionModule } from './transaction/transaction.module';
 import { AuthModule } from './auth/auth.module';
+import { InviteModule } from './wedding-invite/invite.module';
+import { Invite } from './wedding-invite/invite.model';
 
 @Module({
   controllers: [],
@@ -29,13 +31,14 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Category, Profile, Transaction],
+      models: [Category, Profile, Transaction, Invite],
       // autoLoadModels: true,
     }),
     AuthModule,
     TransactionModule,
     CategoryModule,
     FilesModule,
+    InviteModule,
   ],
 })
 export class AppModule {}
