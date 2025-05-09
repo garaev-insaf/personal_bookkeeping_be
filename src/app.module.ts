@@ -17,9 +17,10 @@ import { Invite } from './wedding-invite/invite.model';
 @Module({
   controllers: [],
   imports: [
+    // другие модули...
     ProfileModule,
     ConfigModule.forRoot({
-      envFilePath: `.${process.env.NODE_ENV}.env`,
+      isGlobal: true, // чтобы доступен был везде без повторного импорта
     }),
     ServeStaticModule.forRoot({
       rootPath: path.resolve(__dirname, 'static'),
