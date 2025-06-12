@@ -1,14 +1,5 @@
-import {
-  BelongsTo,
-  Column,
-  DataType,
-  ForeignKey,
-  Model,
-  Table,
-} from 'sequelize-typescript';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
-import { Category } from '../category/category.model';
-import { Profile } from '../profile/profile.model';
 import { CreateInviteDto } from './dto/create-invite.dto';
 
 type TransacionCreationAttrs = CreateInviteDto;
@@ -36,13 +27,6 @@ export class Invite extends Model<Invite, TransacionCreationAttrs> {
   lover_full_name: number;
 
   @ApiProperty({
-    example: 'Есть аллергия на что-то?',
-    description: 'Есть аллергия на что-то?',
-  })
-  @Column({ type: DataType.STRING, allowNull: false })
-  additional: boolean;
-
-  @ApiProperty({
     example: '2025-02-25T05:52:36.062Z',
     description: 'date of create',
   })
@@ -56,11 +40,4 @@ export class Invite extends Model<Invite, TransacionCreationAttrs> {
   })
   @Column({ type: DataType.REAL, allowNull: false })
   is_coming: boolean;
-
-  @ApiProperty({
-    example: ['Виски', 'кола'],
-    description: 'Какое алко буш?',
-  })
-  @Column(DataType.ARRAY(DataType.STRING))
-  alco?: string[];
 }
