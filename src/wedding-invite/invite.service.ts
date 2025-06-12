@@ -20,9 +20,6 @@ export class InviteService {
   async getAllInvite() {
     const transactions = await this.transactionRepository.findAll({
       include: { all: true },
-      attributes: {
-        exclude: ['category_id', 'profile_id'],
-      },
     });
     return transactions;
   }
